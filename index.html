@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Animation | Ynara</title>
+</head>
+<body>
+    <ul></ul>
+    <h1> Desenvolvido por Ynara </h1>
+
+    <style>
+*{
+  margin: 0;
+  padding: 0
+}
+body{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: black;
+}
+
+li{
+  list-style: none;
+  display: block;
+  position: absolute;
+  bottom: -120px;
+  animation: up 3s infinite alternate;
+}
+
+@keyframes up{
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50%{
+    opacity: 0.7;
+  }
+  to{
+    opacity: 0;
+    transform: translateY(-900px) rotate(900deg);
+  }
+}
+
+h1{
+  text-align: center;
+  color: white;
+  margin-top: 20%;
+  animation: move 1s infinite alternate;
+}
+
+@keyframes move {
+    from {
+        transform: translateY(10px)
+    }
+    to {
+        transform: translateY(-10px)
+    }
+}
+
+    </style>
+
+    <script>
+
+const ul = document.querySelector("ul");
+
+const random = (min, max) => Math.random() * (max - min) + min;
+
+const randomColors = ["#5E17EB", "#CB6CE6", "#D80095"];
+
+for (let i = 0; i < 50; i++) {
+  const li = document.createElement("li");
+
+  const size = Math.floor(random(50, 120));
+  const position = random(1, 94);
+  const delay = random(5, 1);
+  const duration = random(10, 40);
+
+  li.style.width = `${size}px`;
+  li.style.height = `${size}px`;
+
+  li.style.backgroundColor = randomColors[Math.floor(random(0, 3))];
+
+  li.style.left = `${position}%`;
+
+  li.style.animationDelay = `${delay}s`;
+  li.style.animationDuration = `${duration}s`;
+
+  li.style.animationTimingFunction = `cubic-bezier(${Math.random()}, ${Math.random()}, 
+                                                   ${Math.random()}, ${Math.random()})`;
+
+  ul.appendChild(li);
+}
+    </script>
+</body>
+</html>
